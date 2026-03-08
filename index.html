@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Món Quà Bí Mật 8/3</title>
+    <style>
+        :root { --primary-pink: #d81b60; --light-pink: #ffe6ea; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--light-pink);
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; margin: 0; overflow: hidden;
+        }
+        .container {
+            background: white; padding: 30px; border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(216, 27, 96, 0.2);
+            text-align: center; width: 85%; max-width: 400px;
+            animation: fadeIn 0.8s ease-out;
+            z-index: 10;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        h1 { color: var(--primary-pink); font-size: 22px; margin-bottom: 10px; }
+        p { color: #666; font-size: 15px; }
+        
+        /* Tối ưu ô nhập cho điện thoại */
+        input[type="tel"] {
+            width: 100%; padding: 15px; margin: 20px 0;
+            border: 2px solid #f48fb1; border-radius: 12px;
+            font-size: 20px; text-align: center; outline: none;
+            box-sizing: border-box;
+        }
+        input:focus { border-color: var(--primary-pink); }
+        
+        button {
+            background: var(--primary-pink); color: white; border: none;
+            width: 100%; padding: 15px; border-radius: 12px;
+            font-size: 18px; font-weight: bold; cursor: pointer;
+            transition: 0.3s;
+        }
+        button:active { transform: scale(0.95); }
+        .error { color: #d32f2f; font-size: 13px; display: none; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌸 Quà Tặng 8/3 🌸</h1>
+        <p>Nhập số thứ tự của bạn (01 - 39)</p>
+        <input type="tel" inputmode="numeric" id="sttInput" placeholder="Ví dụ: 05" maxlength="2">
+        <button onclick="goToPage()">Mở Quà Ngay</button>
+        <p class="error" id="errorMsg">Vui lòng nhập số từ 01 đến 39!</p>
+    </div>
+
+    <script>
+        function goToPage() {
+            let val = document.getElementById('sttInput').value.trim();
+            let num = parseInt(val);
+            if (num >= 1 && num <= 39) {
+                let formatted = num.toString().padStart(2, '0');
+                window.location.href = `trang_${formatted}.html`;
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
